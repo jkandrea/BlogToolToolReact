@@ -1,0 +1,10 @@
+.emptycontainer {
+    height: 400px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: darkgray;
+    font-size: 20px;
+    border-radius: 20px;
+  }

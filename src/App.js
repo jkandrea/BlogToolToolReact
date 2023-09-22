@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import './App.css';
+import MyNavBar from './components/MyNavBar';
+import GIFConverter from "./routes/GifConverter";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MyNavBar />
+        <Router>
+          <Routes>
+            <Route path="/gifconverter" element={<GIFConverter />}>
+            </Route>
+          </Routes>
+          <Routes>
+            <Route path="/tab2" element={<h1>tab2</h1>}>
+            </Route>
+          </Routes>
+        </Router>
       </header>
     </div>
   );
