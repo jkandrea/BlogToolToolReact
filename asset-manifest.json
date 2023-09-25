@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/BlogToolToolReact/static/css/main.a408d0aa.css",
-    "main.js": "/BlogToolToolReact/static/js/main.f06e81f3.js",
+    "main.js": "/BlogToolToolReact/static/js/main.5cb68dd6.js",
     "index.html": "/BlogToolToolReact/index.html",
     "main.a408d0aa.css.map": "/BlogToolToolReact/static/css/main.a408d0aa.css.map",
-    "main.f06e81f3.js.map": "/BlogToolToolReact/static/js/main.f06e81f3.js.map"
+    "main.5cb68dd6.js.map": "/BlogToolToolReact/static/js/main.5cb68dd6.js.map"
   },
   "entrypoints": [
     "static/css/main.a408d0aa.css",
-    "static/js/main.f06e81f3.js"
+    "static/js/main.5cb68dd6.js"
   ]
 }
