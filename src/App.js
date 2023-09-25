@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <MyNavBar/>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <Routes>
             <Route path="/" element={<GIFConverter />}>
             </Route>
