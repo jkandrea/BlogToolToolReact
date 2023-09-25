@@ -15,7 +15,7 @@ function App() {
       <header className="App-header">
         <MyNavBar/>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Router>
+          {/* <Router> */}
             <Routes>
               <Route path="/" element={<GIFConverter />}>
               </Route>
@@ -28,7 +28,7 @@ function App() {
               <Route path="/tab2" element={<h1>tab2</h1>}>
               </Route>
             </Routes>
-          </Router>
+          {/* </Router> */}
         </BrowserRouter>
       </header>
     </div>
