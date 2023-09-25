@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MyNavBar />
-        <Router>
+        <MyNavBar/>
+        <Router basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/gifconverter" element={<GIFConverter />}>
             </Route>
