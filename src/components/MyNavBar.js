@@ -15,7 +15,7 @@ function MyNavBar() {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/gifconverter">GIF 변환기</Nav.Link>
           <NavDropdown title="이미지 변환기" id="navbarScrollingDropdown">
-            <Nav.Link to="/tab2">워터마크 추가</Nav.Link>
+            <Nav.Link href="/tab2">워터마크 추가</Nav.Link>
           </NavDropdown>
         </Nav>
         </Navbar.Collapse>
