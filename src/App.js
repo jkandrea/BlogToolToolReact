@@ -14,6 +14,10 @@ function App() {
         <MyNavBar/>
         <Router basename={process.env.PUBLIC_URL}>
           <Routes>
+            <Route path="/" element={<GIFConverter />}>
+            </Route>
+          </Routes>
+          <Routes>
             <Route path="/gifconverter" element={<GIFConverter />}>
             </Route>
           </Routes>
