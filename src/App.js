@@ -9,7 +9,6 @@ import MyNavBar from './components/MyNavBar';
 import GIFConverter from "./routes/GifConverter";
 
 function App() {
-  console.log(process.env.PUBLIC_URL + "/gifconverter")
   return (
     <div className="App">
       <header className="App-header">
