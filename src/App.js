@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  BrowserRouter,
 } from "react-router-dom";
 import './App.css';
 import MyNavBar from './components/MyNavBar';
@@ -13,17 +12,18 @@ function App() {
     <div className="App">
       <header className="App-header">
         <MyNavBar/>
-        <Router>
+        {/* <Router basename="/"> */}
+        <Router basename={process.env.PUBLIC_URL}>
             <Routes>
-              <Route path={process.env.PUBLIC_URL + "/"} element={<GIFConverter />}>
+              <Route path="/" element={<GIFConverter />}>
               </Route>
             </Routes>
             <Routes>
-              <Route path={process.env.PUBLIC_URL + "/gifconverter"} element={<GIFConverter />}>
+              <Route path="/gifconverter" element={<GIFConverter />}>
               </Route>
             </Routes>
             <Routes>
-              <Route path={process.env.PUBLIC_URL + "/tab2"} element={<h1>tab2</h1>}>
+              <Route path="/tab2" element={<h1>tab2</h1>}>
               </Route>
             </Routes>
         </Router>
