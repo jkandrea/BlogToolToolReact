@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BlogToolToolReact/static/css/main.70b651b3.chunk.css",
-    "main.js": "/BlogToolToolReact/static/js/main.64ece267.chunk.js",
-    "main.js.map": "/BlogToolToolReact/static/js/main.64ece267.chunk.js.map",
+    "main.js": "/BlogToolToolReact/static/js/main.71ce9cac.chunk.js",
+    "main.js.map": "/BlogToolToolReact/static/js/main.71ce9cac.chunk.js.map",
     "runtime-main.js": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js",
     "runtime-main.js.map": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js.map",
     "static/css/2.3a251c85.chunk.css": "/BlogToolToolReact/static/css/2.3a251c85.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.3a251c85.chunk.css",
     "static/js/2.5eaeeabe.chunk.js",
     "static/css/main.70b651b3.chunk.css",
-    "static/js/main.64ece267.chunk.js"
+    "static/js/main.71ce9cac.chunk.js"
   ]
 }
