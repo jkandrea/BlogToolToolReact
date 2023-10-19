@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/BlogToolToolReact/static/css/main.df520e06.chunk.css",
-    "main.js": "/BlogToolToolReact/static/js/main.84ac1e16.chunk.js",
-    "main.js.map": "/BlogToolToolReact/static/js/main.84ac1e16.chunk.js.map",
+    "main.css": "/BlogToolToolReact/static/css/main.263aa784.chunk.css",
+    "main.js": "/BlogToolToolReact/static/js/main.99f0bbf0.chunk.js",
+    "main.js.map": "/BlogToolToolReact/static/js/main.99f0bbf0.chunk.js.map",
     "runtime-main.js": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js",
     "runtime-main.js.map": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js.map",
     "static/css/2.3a251c85.chunk.css": "/BlogToolToolReact/static/css/2.3a251c85.chunk.css",
@@ -10,14 +10,14 @@
     "static/js/2.be4e5b1c.chunk.js.map": "/BlogToolToolReact/static/js/2.be4e5b1c.chunk.js.map",
     "index.html": "/BlogToolToolReact/index.html",
     "static/css/2.3a251c85.chunk.css.map": "/BlogToolToolReact/static/css/2.3a251c85.chunk.css.map",
-    "static/css/main.df520e06.chunk.css.map": "/BlogToolToolReact/static/css/main.df520e06.chunk.css.map",
+    "static/css/main.263aa784.chunk.css.map": "/BlogToolToolReact/static/css/main.263aa784.chunk.css.map",
     "static/js/2.be4e5b1c.chunk.js.LICENSE.txt": "/BlogToolToolReact/static/js/2.be4e5b1c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a96cd6d5.js",
     "static/css/2.3a251c85.chunk.css",
     "static/js/2.be4e5b1c.chunk.js",
-    "static/css/main.df520e06.chunk.css",
-    "static/js/main.84ac1e16.chunk.js"
+    "static/css/main.263aa784.chunk.css",
+    "static/js/main.99f0bbf0.chunk.js"
   ]
 }
