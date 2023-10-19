@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form'
 import { useState, useRef } from 'react';
 import GIFEncoder from 'gifencoder';
 import PreviewCard from '../components/Previewcard';
+import VideoRange from '../components/VideoRange';
 
 function GIFConverter() {
     const mobileyn = MobileCheck();
@@ -23,7 +24,7 @@ function GIFConverter() {
     const [videolength, setVideolength] = useState(0);
     const [starttime, setStarttime] = useState(0);
     const [endtime, setEndtime] = useState(0);
-    const [magnification, setMagnification] = useState(100);
+    const [magnification, setMagnification] = useState(50);
     const [height, setHeight] = useState(0);
     const [width, setWidth] = useState(0);
     const [vcurrenttime, setVcurrenttime] = useState(0);
@@ -33,7 +34,7 @@ function GIFConverter() {
     const [cuttedfps, setCuttedfps] = useState(15);
 
     const [cards, setCards] = useState([]);
-    
+
     const gifencoder = useRef(null);
     const canvas = useRef(null);
     const ctx = useRef(null);
@@ -106,7 +107,7 @@ function GIFConverter() {
             setCuttedlength(parseFloat(endtime - event.target.value).toFixed(1));
         }
         else if (event.target.id === 'InputRange2' || event.target.id === 'InputEnd') {
-            if(parseFloat(event.target.value) >= parseFloat(videolength)) {
+            if (parseFloat(event.target.value) >= parseFloat(videolength)) {
                 event.target.value = videolength;
             }
             if (parseFloat(event.target.value) <= parseFloat(starttime)) {
@@ -117,7 +118,7 @@ function GIFConverter() {
                 document.getElementById('InputEnd').value = event.target.value;
             }
             document.getElementById('SrcVideo').currentTime = starttime;
-            setCuttedlength(parseFloat(event.target.value- starttime).toFixed(1));
+            setCuttedlength(parseFloat(event.target.value - starttime).toFixed(1));
         }
     }
 
@@ -127,24 +128,24 @@ function GIFConverter() {
         //     console.log(event.target.currentTime + ' ' + endtime + ' ' + captime.current);
         // }
         if (event.target.currentTime >= endtime) {
-            if(onair) {
+            if (onair) {
                 console.log(event.target.currentTime + ' ' + endtime);
                 setOnair(false);
                 gifencoder.current.finish();
 
                 const gif_url = URL.createObjectURL(new Blob([new Uint8Array(gifencoder.current.out.getData())], { type: 'image/gif' }));
-                const card = PreviewCard(gif_url, 
-                    'BlogtooltoolGIF_' + cards.length + '.gif', 
-                    (gifencoder.current.out.getData().length / 1024 /1024).toFixed(1) + 'MB', 
+                const card = PreviewCard(gif_url,
+                    'BlogtooltoolGIF_' + cards.length + '.gif',
+                    (gifencoder.current.out.getData().length / 1024 / 1024).toFixed(1) + 'MB',
                     'card' + cards.length
-                    );
+                );
                 setCards([...cards, card]);
             }
             event.target.currentTime = starttime;
-            if(event.target.paused) {
+            if (event.target.paused) {
                 event.target.play();
             }
-        }else if(onair){
+        } else if (onair) {
             event.target.pause();
             if (event.target.currentTime >= captime.current) {
                 ctx.current.drawImage(event.target, 0, 0, canvas.current.width, canvas.current.height);
@@ -214,7 +215,7 @@ function GIFConverter() {
                                     onLoadedData={VideoLoadedData}
                                     onTimeUpdate={TimeUpdate}
                                     onEnded={TimeUpdate}
-                                    >
+                                >
                                 </video>
                             </Container>
                             <div>
@@ -225,47 +226,45 @@ function GIFConverter() {
                                     <ProgressBar style={{ backgroundColor: 'gray' }} now={videolength - endtime} max={videolength} />
                                 </ProgressBar>
                             </div>
-                            <input id='InputRange1' type="range" step={0.001} style={{ width: '100%' }} min="0" max={videolength} value={starttime} onChange={Rangevalchange} disabled = {onair}/>
-                            <input id='InputRange2' type="range" step={0.001} style={{ width: '100%' }} min="0" max={videolength} value={endtime} onChange={Rangevalchange} disabled = {onair} />
-                            
+                            <VideoRange maxtime={videolength} starttime={starttime} endtime={endtime} onChange={Rangevalchange} disabled={onair} />            
                             <Form>
                                 <Form.Group as={Row}>
-                                    <Form.Label column xs = {3} md = {2}>시작 시간(초)</Form.Label>
-                                    <Col xs = {3} md = {2}>
-                                        <Form.Control id='InputStart' type="number" step={0.001} min="0" max={videolength} onBlur={Rangevalchange} disabled = {onair}/>
+                                    <Form.Label column xs={3} md={2}>시작 시간(초)</Form.Label>
+                                    <Col xs={3} md={2}>
+                                        <Form.Control id='InputStart' type="number" step={0.001} min="0" max={videolength} onBlur={Rangevalchange} disabled={onair} />
                                     </Col>
-                                    <Form.Label column xs = {3} md = {2}>종료 시간(초)</Form.Label>
-                                    <Col xs = {3} md = {2}>
-                                        <Form.Control id='InputEnd' type="number" step={0.001} min="0" max={videolength} onBlur={Rangevalchange} disabled = {onair}/>
-                                    </Col>
-                                </Form.Group>
-                                <Form.Group as={Row}>
-                                    <Form.Label column xs = {3} md = {2}>FPS</Form.Label>
-                                    <Col xs = {3} md = {2}>
-                                        <Form.Control type="number" value = {cuttedfps} min="0" max={videolength} onChange={fpsChange} disabled = {onair}/>
-                                    </Col>
-                                    <Form.Label column xs = {3} md = {2}>영상 길이(초)</Form.Label>
-                                    <Col xs = {3} md = {2}>
-                                        <Form.Control  type="number" value = {cuttedlength} min="0" max={videolength} disabled />
+                                    <Form.Label column xs={3} md={2}>종료 시간(초)</Form.Label>
+                                    <Col xs={3} md={2}>
+                                        <Form.Control id='InputEnd' type="number" step={0.001} min="0" max={videolength} onBlur={Rangevalchange} disabled={onair} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
-                                    <Form.Label column xs = {9} md = {2} >배율(%)</Form.Label>
-                                    <Col xs = {3} md = {2}>
-                                        <Form.Control type="number" min="0" max="100" value={magnification} onChange={magnificationChange} disabled = {onair}/>
+                                    <Form.Label column xs={3} md={2}>FPS</Form.Label>
+                                    <Col xs={3} md={2}>
+                                        <Form.Control type="number" value={cuttedfps} min="0" max={videolength} onChange={fpsChange} disabled={onair} />
                                     </Col>
-                                    <Form.Label column xs = {3} md = {2} >넓이</Form.Label>
-                                    <Col xs = {3} md = {2}>
+                                    <Form.Label column xs={3} md={2}>영상 길이(초)</Form.Label>
+                                    <Col xs={3} md={2}>
+                                        <Form.Control type="number" value={cuttedlength} min="0" max={videolength} disabled />
+                                    </Col>
+                                </Form.Group>
+                                <Form.Group as={Row}>
+                                    <Form.Label column xs={9} md={2} >배율(%)</Form.Label>
+                                    <Col xs={3} md={2}>
+                                        <Form.Control type="number" min="0" max="100" value={magnification} onChange={magnificationChange} disabled={onair} />
+                                    </Col>
+                                    <Form.Label column xs={3} md={2} >넓이</Form.Label>
+                                    <Col xs={3} md={2}>
                                         <Form.Control type="number" min="0" max="100" value={width} disabled />
                                     </Col>
-                                    <Form.Label column xs = {3} md = {2} >높이</Form.Label>
-                                    <Col xs = {3} md = {2}>
+                                    <Form.Label column xs={3} md={2} >높이</Form.Label>
+                                    <Col xs={3} md={2}>
                                         <Form.Control type="number" min="0" max="100" value={height} disabled />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
-                                    <Col xs = {12} md = {12}>
-                                        <Form.Control type="submit" value="변환 시작" onClick={ConvertStart} disabled = {onair}/>
+                                    <Col xs={12} md={12}>
+                                        <Form.Control type="submit" value="변환 시작" onClick={ConvertStart} disabled={onair} />
                                     </Col>
                                 </Form.Group>
                             </Form>
