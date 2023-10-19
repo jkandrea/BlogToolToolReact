@@ -6,10 +6,14 @@ import {
 import './App.css';
 import MyNavBar from './components/MyNavBar';
 import GIFConverter from "./routes/GifConverter";
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <title>블록툴툴</title>
+      </Helmet>
       <header className="App-header">
         <MyNavBar/>
         {/* <Router basename="/"> */}
@@ -23,7 +27,7 @@ function App() {
               </Route>
             </Routes>
             <Routes>
-              <Route path="/tab2" element={<h1>tab2</h1>}>
+              <Route path="/tab2" element={<><Helmet><title>탭2</title></Helmet><h1>tab2change</h1></>}>
               </Route>
             </Routes>
         </Router>

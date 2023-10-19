@@ -7,7 +7,7 @@ function VideoRange({ maxtime, starttime, endtime, onChange, abled }) {
         // , display: 'flex', justifyContent: 'center'
         // , position : 'relative', top : '0px', left : '0px'
         // }}>
-        <Container className={videorangestyle.videorangecontainer}>
+        <Container className={videorangestyle.rangecontainer}>
             <input id='InputRange1' type="range" step={0.001}
                 min="0" max={maxtime} value={starttime} onChange={onChange} disabled={abled} />
             <input id='InputRange2' type="range" step={0.001}

@@ -8,6 +8,7 @@ import { useState, useRef } from 'react';
 import GIFEncoder from 'gifencoder';
 import PreviewCard from '../components/Previewcard';
 import VideoRange from '../components/VideoRange';
+import { Helmet } from 'react-helmet';
 
 function GIFConverter() {
     const mobileyn = MobileCheck();
@@ -188,6 +189,10 @@ function GIFConverter() {
         setOnair(true);
     }
     return (
+        <>
+        <Helmet>
+            <title>블록툴툴 GIF 변환기</title>
+        </Helmet>
         <Container>
             <Row>
                 <Col>
@@ -279,6 +284,7 @@ function GIFConverter() {
                 </Col>
             </Row>
         </Container>
+        </>
     )
 }
 
