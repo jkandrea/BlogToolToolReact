@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/BlogToolToolReact/static/css/main.70b651b3.chunk.css",
-    "main.js": "/BlogToolToolReact/static/js/main.71ce9cac.chunk.js",
-    "main.js.map": "/BlogToolToolReact/static/js/main.71ce9cac.chunk.js.map",
+    "main.css": "/BlogToolToolReact/static/css/main.42e5029b.chunk.css",
+    "main.js": "/BlogToolToolReact/static/js/main.b2763dd5.chunk.js",
+    "main.js.map": "/BlogToolToolReact/static/js/main.b2763dd5.chunk.js.map",
     "runtime-main.js": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js",
     "runtime-main.js.map": "/BlogToolToolReact/static/js/runtime-main.a96cd6d5.js.map",
     "static/css/2.3a251c85.chunk.css": "/BlogToolToolReact/static/css/2.3a251c85.chunk.css",
-    "static/js/2.5eaeeabe.chunk.js": "/BlogToolToolReact/static/js/2.5eaeeabe.chunk.js",
-    "static/js/2.5eaeeabe.chunk.js.map": "/BlogToolToolReact/static/js/2.5eaeeabe.chunk.js.map",
+    "static/js/2.e65af0b6.chunk.js": "/BlogToolToolReact/static/js/2.e65af0b6.chunk.js",
+    "static/js/2.e65af0b6.chunk.js.map": "/BlogToolToolReact/static/js/2.e65af0b6.chunk.js.map",
     "index.html": "/BlogToolToolReact/index.html",
     "static/css/2.3a251c85.chunk.css.map": "/BlogToolToolReact/static/css/2.3a251c85.chunk.css.map",
-    "static/css/main.70b651b3.chunk.css.map": "/BlogToolToolReact/static/css/main.70b651b3.chunk.css.map",
-    "static/js/2.5eaeeabe.chunk.js.LICENSE.txt": "/BlogToolToolReact/static/js/2.5eaeeabe.chunk.js.LICENSE.txt"
+    "static/css/main.42e5029b.chunk.css.map": "/BlogToolToolReact/static/css/main.42e5029b.chunk.css.map",
+    "static/js/2.e65af0b6.chunk.js.LICENSE.txt": "/BlogToolToolReact/static/js/2.e65af0b6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a96cd6d5.js",
     "static/css/2.3a251c85.chunk.css",
-    "static/js/2.5eaeeabe.chunk.js",
-    "static/css/main.70b651b3.chunk.css",
-    "static/js/main.71ce9cac.chunk.js"
+    "static/js/2.e65af0b6.chunk.js",
+    "static/css/main.42e5029b.chunk.css",
+    "static/js/main.b2763dd5.chunk.js"
   ]
 }
