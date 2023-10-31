@@ -13,6 +13,11 @@ import { Helmet } from 'react-helmet';
 function GIFConverter() {
     const mobileyn = MobileCheck();
 
+    const metaDatas = {
+        title: '블록툴툴 GIF 변환기',
+        description: 'GIF 변환을 위한 영상을 업로드하고 시작 시간과 종료 시간을 설정하면 GIF로 변환해줍니다.',
+    };
+
     function MobileCheck() {
         const UserAgent = navigator.userAgent;
         if (UserAgent.indexOf("Mobile") > -1) {
@@ -190,9 +195,10 @@ function GIFConverter() {
     }
     return (
         <>
-        <Helmet>
+        {/* <Helmet>
             <title>블록툴툴 GIF 변환기</title>
-        </Helmet>
+        </Helmet> */}
+        <Meta data={metaDatas} />
         <Container>
             <Row>
                 <Col>
