@@ -9,6 +9,7 @@ import GIFEncoder from 'gifencoder';
 import PreviewCard from '../components/Previewcard';
 import VideoRange from '../components/VideoRange';
 import { Helmet } from 'react-helmet';
+import Meta from '../components/Meta';
 
 function GIFConverter() {
     const mobileyn = MobileCheck();
