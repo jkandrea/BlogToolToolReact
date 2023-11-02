@@ -1,9 +1,10 @@
 import Meta from '../components/Meta';
+import EmptyBox from '../components/EmptyBox';
 import { useState } from 'react';
 
 function Watermark(){
     
-    const [imageurl, setImageurl] = useState("");
+    const [imageurl, setImageurl] = useState(null);
     const [loaded, setLoaded] = useState(false);
     const metaDatas = {
         title: "블록툴툴 워터마크",
@@ -40,7 +41,7 @@ function Watermark(){
         file.onchange = function (event) {
             const file = event.target.files[0];
             setLoaded(false);
-            setImageUrl(URL.createObjectURL(file));
+            setImageurl(URL.createObjectURL(file));
         }
         file.click();
     }
@@ -74,7 +75,9 @@ function Watermark(){
                 <h1>Watermark</h1>
                 {imageurl == null?
                 <div><EmptyBox onClick={ImageFileOpen} onDragOver={ImageDragOver} onDrop={ImageFileDrop} /> </div> : 
-                <div><ImageBox src={imageurl} /> </div>
+                <div>
+                    <img src={imageurl} alt="이미지" onClick={Imageclick} onDragOver={ImageDragOver} onDrop={ImageFileDrop} />
+                </div>
             }
             </div>
         </>
