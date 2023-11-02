@@ -1,6 +1,10 @@
 import Meta from '../components/Meta';
+import { useState } from 'react';
 
 function Watermark(){
+    
+    const [imageurl, setImageurl] = useState("");
+    const [loaded, setLoaded] = useState(false);
     const metaDatas = {
         title: "블록툴툴 워터마크",
         description: "블록툴툴 워터마크",
@@ -28,12 +32,50 @@ function Watermark(){
             "twitter:image": "https://blogtooltool.github.io/watermark/logo.png"
         }
     };
+    
+    function ImageFileOpen() {
+        const file = document.createElement("input");
+        file.type = "file";
+        file.accept = "image/*";
+        file.onchange = function (event) {
+            const file = event.target.files[0];
+            setLoaded(false);
+            setImageUrl(URL.createObjectURL(file));
+        }
+        file.click();
+    }
+    
+    function ImageDragOver(event) {
+        event.preventDefault();
+    }
+    function ImageFileDrop(event) {
+        event.preventDefault();
+
+        if (event.dataTransfer.files.length === 0) {
+            return;
+        }
+        if (event.dataTransfer.files[0].type.indexOf("image") === -1) {
+            return;
+        }
+
+        const file = event.dataTransfer.files[0];
+        setLoaded(false);
+        setImageurl(URL.createObjectURL(file));
+    }
+
+    function Imageclick(event) {
+        ImageFileOpen();
+    }
 
     return (
         <>
             <Meta data={metaDatas} />
             <div>
                 <h1>Watermark</h1>
+                {imageurl == null?
+                <div><EmptyBox onClick={ImageFileOpen} onDragOver={ImageDragOver} onDrop={ImageFileDrop} /> </div> : 
+                <div><ImageBox src={imageurl} /> </div>
+            }
             </div>
         </>
     )
