@@ -24,11 +24,11 @@ function App() {
               </Route>
             </Routes>
             <Routes>
-              <Route path="/gifconverter" element={<GIFConverter />}>
+              <Route path="/gifconverter/" element={<GIFConverter />}>
               </Route>
             </Routes>
             <Routes>
-              <Route path="/watermark" element={<Watermark />}>
+              <Route path="/watermark/" element={<Watermark />}>
               </Route>
             </Routes>
         </Router>

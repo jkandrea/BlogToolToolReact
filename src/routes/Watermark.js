@@ -1,5 +1,7 @@
+import Meta from '../components/Meta';
+
 function Watermark(){
-    metaDatas = {
+    const metaDatas = {
         title: "블록툴툴 워터마크",
         description: "블록툴툴 워터마크",
         canonical: "https://blogtooltool.github.io/watermark",
@@ -36,3 +38,5 @@ function Watermark(){
         </>
     )
 }
+
+export default Watermark;
