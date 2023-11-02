@@ -6,6 +6,7 @@ import {
 import './App.css';
 import MyNavBar from './components/MyNavBar';
 import GIFConverter from "./routes/GifConverter";
+import Watermark from "./routes/Watermark";
 import { Helmet } from 'react-helmet';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
               </Route>
             </Routes>
             <Routes>
-              <Route path="/tab2" element={<><Helmet><title>탭2</title></Helmet><h1>tab2change</h1></>}>
+              <Route path="/watermark" element={<Watermark />}>
               </Route>
             </Routes>
         </Router>
