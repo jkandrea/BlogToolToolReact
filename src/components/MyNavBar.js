@@ -13,9 +13,10 @@ function MyNavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href={process.env.PUBLIC_URL+"/gifconverter"}>GIF 변환기</Nav.Link>
-          <NavDropdown title="이미지 변환기" id="navbarScrollingDropdown">
+          <Nav.Link href={process.env.PUBLIC_URL+"/watermark"}>워터마크 추가</Nav.Link>
+          {/* <NavDropdown title="이미지 변환기" id="navbarScrollingDropdown">
             <Nav.Link href={process.env.PUBLIC_URL+"/watermark"}>워터마크 추가</Nav.Link>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
         </Navbar.Collapse>
       </Container>

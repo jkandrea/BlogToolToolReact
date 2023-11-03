@@ -73,6 +73,7 @@ function Watermark(){
             <Meta data={metaDatas} />
             <div>
                 <h1>Watermark</h1>
+                <p>Add watermark in image</p>
                 {imageurl == null?
                 <div><EmptyBox onClick={ImageFileOpen} onDragOver={ImageDragOver} onDrop={ImageFileDrop} /> </div> : 
                 <div>
