@@ -19,11 +19,32 @@ function formatTime(seconds) {
   return `${String(minutes).padStart(2, "0")}:${remainder}`;
 }
 
-function seekVideo(video, time) {
+function waitForActiveSeek(video) {
+  if (!video.seeking) return Promise.resolve();
   return new Promise((resolve) => {
-    const done = () => { video.removeEventListener("seeked", done); resolve(); };
+    const finish = () => {
+      clearTimeout(timeout);
+      video.removeEventListener("seeked", finish);
+      resolve();
+    };
+    const timeout = setTimeout(finish, 3000);
+    video.addEventListener("seeked", finish, { once: true });
+  });
+}
+
+async function seekVideo(video, time) {
+  await waitForActiveSeek(video);
+  const target = Math.min(time, video.duration);
+  if (Math.abs(video.currentTime - target) < 0.005 && video.readyState >= 2) return;
+  return new Promise((resolve) => {
+    const done = () => {
+      clearTimeout(timeout);
+      video.removeEventListener("seeked", done);
+      resolve();
+    };
+    const timeout = setTimeout(done, 5000);
     video.addEventListener("seeked", done);
-    video.currentTime = Math.min(time, video.duration);
+    video.currentTime = target;
   });
 }
 
