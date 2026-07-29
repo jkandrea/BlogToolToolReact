@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 test("renders the service value proposition and primary tools", () => {
@@ -7,4 +7,13 @@ test("renders the service value proposition and primary tools", () => {
   expect(screen.getAllByText("동영상 GIF 변환").length).toBeGreaterThan(0);
   expect(screen.getAllByText("이미지 리사이즈").length).toBeGreaterThan(0);
   expect(screen.getAllByText("워터마크 넣기").length).toBeGreaterThan(0);
+});
+
+test("renders the destination immediately after client-side navigation", async () => {
+  window.scrollTo.mockReturnValue(Promise.resolve());
+  render(<App />);
+
+  fireEvent.click(screen.getByRole("link", { name: /무료 도구 둘러보기/ }));
+
+  expect(await screen.findByRole("heading", { name: "무료 블로그 도구" })).toBeInTheDocument();
 });
