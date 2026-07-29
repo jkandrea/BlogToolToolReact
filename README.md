@@ -28,7 +28,7 @@ GitHub Pages 미리보기 배포:
 npm run deploy
 ```
 
-현재 `homepage`는 `https://jkandrea.github.io/BlogToolToolReact`로 설정되어 있습니다. `blogtooltool.com`을 이 저장소의 GitHub Pages에 연결할 때는 `package.json`의 `homepage`를 `https://blogtooltool.com`으로 변경하고 `public/CNAME`에 `blogtooltool.com`을 추가한 뒤 다시 배포하세요.
+현재 `homepage`와 `public/CNAME`은 `https://blogtooltool.com`을 기준으로 설정되어 있습니다. GitHub Pages의 배포 브랜치는 `gh-pages`이며, `www.blogtooltool.com`은 apex 도메인으로 리디렉션되도록 DNS에서 `jkandrea.github.io`를 가리킵니다.
 
 `build/` 폴더를 정적 호스팅에 배포합니다. React Router를 사용하므로 호스팅 서버는 존재하지 않는 경로를 `index.html`로 돌려주는 SPA fallback 설정이 필요합니다.
 
