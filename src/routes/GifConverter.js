@@ -2,6 +2,23 @@ import { useEffect, useRef, useState } from "react";
 import GIF from "gif.js";
 import Meta from "../components/Meta";
 
+const MIN_CLIP_SECONDS = 0.1;
+
+export function clampStartTime(value, end, duration) {
+  return Math.max(0, Math.min(Number(value), Math.max(0, Math.min(end - MIN_CLIP_SECONDS, duration))));
+}
+
+export function clampEndTime(value, start, duration) {
+  return Math.min(duration, Math.max(Number(value), Math.min(duration, start + MIN_CLIP_SECONDS)));
+}
+
+function formatTime(seconds) {
+  const safeSeconds = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
+  const minutes = Math.floor(safeSeconds / 60);
+  const remainder = (safeSeconds % 60).toFixed(1).padStart(4, "0");
+  return `${String(minutes).padStart(2, "0")}:${remainder}`;
+}
+
 function seekVideo(video, time) {
   return new Promise((resolve) => {
     const done = () => { video.removeEventListener("seeked", done); resolve(); };
@@ -19,6 +36,7 @@ function GIFConverter() {
   const [duration, setDuration] = useState(0);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [fps, setFps] = useState(10);
   const [scale, setScale] = useState(50);
   const [progress, setProgress] = useState(0);
@@ -39,6 +57,7 @@ function GIFConverter() {
     setFileName(file.name.replace(/\.[^.]+$/, ""));
     setResult(null);
     setError("");
+    setCurrentTime(0);
   }
 
   function loaded(event) {
@@ -46,6 +65,49 @@ function GIFConverter() {
     setDuration(length);
     setStart(0);
     setEnd(Math.min(length, 6));
+    setCurrentTime(0);
+  }
+
+  function seekTo(time) {
+    const video = videoRef.current;
+    const nextTime = Math.max(0, Math.min(Number(time), duration));
+    if (video) video.currentTime = nextTime;
+    setCurrentTime(nextTime);
+  }
+
+  function changeStart(value) {
+    const nextStart = clampStartTime(value, end, duration);
+    setStart(nextStart);
+    seekTo(nextStart);
+  }
+
+  function changeEnd(value) {
+    const nextEnd = clampEndTime(value, start, duration);
+    setEnd(nextEnd);
+    seekTo(nextEnd);
+  }
+
+  function updatePlayback(event) {
+    const video = event.currentTarget;
+    if (!video.paused && video.currentTime >= end) {
+      video.currentTime = start;
+    }
+    setCurrentTime(video.currentTime);
+  }
+
+  function playSelection() {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = start;
+    setCurrentTime(start);
+    video.play();
+  }
+
+  function seekFromTimeline(event) {
+    if (event.target.closest(".clip-handle")) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    seekTo(ratio * duration);
   }
 
   async function convert() {
@@ -111,9 +173,13 @@ function GIFConverter() {
     setResult(null);
     setProgress(0);
     setError("");
+    setCurrentTime(0);
   }
 
   const estimatedFrames = Math.ceil(Math.max(0, end - start) * fps);
+  const startPercent = duration ? (start / duration) * 100 : 0;
+  const endPercent = duration ? (end / duration) * 100 : 0;
+  const playPercent = duration ? (currentTime / duration) * 100 : 0;
   return (
     <>
       <Meta title="동영상 GIF 변환 — 무료·워터마크 없음 | BlogToolTool" description="MP4와 WebM 영상에서 원하는 구간을 잘라 GIF로 변환하세요. 워터마크와 서버 업로드 없이 브라우저에서 무료로 만들 수 있습니다." path="/tools/video-to-gif" />
@@ -127,7 +193,34 @@ function GIFConverter() {
         ) : (
           <>
             <div className="editor-grid">
-              <div className="preview-pane">{result ? <img src={result.url} alt="변환된 GIF 미리보기" /> : <video ref={videoRef} src={src} controls muted playsInline onLoadedMetadata={loaded} />}</div>
+              <div className="preview-pane">
+                {result ? <img src={result.url} alt="변환된 GIF 미리보기" /> : (
+                  <div className="video-stage">
+                    <video ref={videoRef} src={src} controls muted playsInline onLoadedMetadata={loaded} onTimeUpdate={updatePlayback} onSeeked={updatePlayback} />
+                    {duration > 0 && (
+                      <div className="clip-editor">
+                        <div className="clip-editor-heading">
+                          <div><b>GIF 구간 선택</b><span>양쪽 핸들을 드래그하세요</span></div>
+                          <strong>{formatTime(start)} — {formatTime(end)}</strong>
+                        </div>
+                        <div className="clip-timeline" onClick={seekFromTimeline}>
+                          <div className="clip-track" />
+                          <div className="clip-selection" style={{ left: `${startPercent}%`, width: `${Math.max(0, endPercent - startPercent)}%` }} />
+                          <div className="clip-playhead" style={{ left: `${playPercent}%` }}><span>{formatTime(currentTime)}</span></div>
+                          <input className="clip-handle clip-handle-start" aria-label="GIF 시작 지점" type="range" min="0" max={duration} step=".01" value={start} disabled={working} onChange={(event) => changeStart(event.target.value)} />
+                          <input className="clip-handle clip-handle-end" aria-label="GIF 종료 지점" type="range" min="0" max={duration} step=".01" value={end} disabled={working} onChange={(event) => changeEnd(event.target.value)} />
+                        </div>
+                        <div className="clip-scale"><span>00:00.0</span><span>{formatTime(duration)}</span></div>
+                        <div className="clip-actions">
+                          <button type="button" onClick={() => changeStart(currentTime)} disabled={working || currentTime >= end}>현재 위치를 시작점으로</button>
+                          <button type="button" className="play-clip" onClick={playSelection} disabled={working}>선택 구간 재생 ▶</button>
+                          <button type="button" onClick={() => changeEnd(currentTime)} disabled={working || currentTime <= start}>현재 위치를 종료점으로</button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
               <div className="control-pane">
                 <h2>{result ? "GIF 완성" : "변환 설정"}</h2>
                 {result ? (
@@ -140,8 +233,8 @@ function GIFConverter() {
                 ) : (
                   <>
                     <div className="field-row">
-                      <div className="field"><label htmlFor="gif-start">시작 (초)</label><input id="gif-start" type="number" min="0" max={end} step=".1" value={start} disabled={working} onChange={(event) => setStart(Math.max(0, Number(event.target.value)))} /></div>
-                      <div className="field"><label htmlFor="gif-end">종료 (초)</label><input id="gif-end" type="number" min={start} max={duration} step=".1" value={end} disabled={working} onChange={(event) => setEnd(Math.min(duration, Number(event.target.value)))} /></div>
+                      <div className="field"><label htmlFor="gif-start">시작 (초)</label><input id="gif-start" type="number" min="0" max={end - MIN_CLIP_SECONDS} step=".1" value={Number(start.toFixed(2))} disabled={working} onChange={(event) => changeStart(event.target.value)} /></div>
+                      <div className="field"><label htmlFor="gif-end">종료 (초)</label><input id="gif-end" type="number" min={start + MIN_CLIP_SECONDS} max={duration} step=".1" value={Number(end.toFixed(2))} disabled={working} onChange={(event) => changeEnd(event.target.value)} /></div>
                     </div>
                     <div className="field"><label htmlFor="gif-fps"><span>부드러움 (FPS)</span><output>{fps} FPS</output></label><input id="gif-fps" type="range" min="5" max="20" value={fps} disabled={working} onChange={(event) => setFps(Number(event.target.value))} /></div>
                     <div className="field"><label htmlFor="gif-scale"><span>출력 크기</span><output>{scale}%</output></label><input id="gif-scale" type="range" min="20" max="100" step="5" value={scale} disabled={working} onChange={(event) => setScale(Number(event.target.value))} /></div>
