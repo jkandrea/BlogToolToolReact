@@ -106,7 +106,7 @@ function Layout({ children }) {
           </div>
           <div className="footer-links">
             <div><strong>도구</strong><Link to="/tools/video-to-gif">동영상 GIF 변환</Link><Link to="/tools/image-resizer">이미지 리사이즈</Link><Link to="/tools/watermark">워터마크 넣기</Link></div>
-            <div><strong>BlogToolTool</strong><Link to="/about">서비스 소개</Link><Link to="/guides">활용 가이드</Link><a href="mailto:hello@blogtooltool.com">문의하기</a></div>
+            <div><strong>BlogToolTool</strong><Link to="/about">서비스 소개</Link><Link to="/guides">활용 가이드</Link><a href="mailto:jhonbeetbox@naver.com">문의하기</a></div>
             <div><strong>정책</strong><Link to="/privacy">개인정보처리방침</Link><Link to="/terms">이용약관</Link></div>
           </div>
         </div>
@@ -244,15 +244,15 @@ function Page({ title, intro, path, children }) {
 }
 
 function About() {
-  return <Page title="블로거의 귀찮은 작업을 줄입니다" intro="BlogToolTool은 콘텐츠에 더 집중할 수 있도록 반복적인 이미지·영상 작업을 간단하게 만드는 무료 웹 도구입니다." path="/about"><div className="prose"><h2>작지만 제대로 작동하는 도구</h2><p>거대한 편집 프로그램을 켜지 않고도, 블로그에 사진 한 장을 올리기 위해 필요한 일을 빠르게 끝낼 수 있어야 한다고 생각합니다. 기능은 이해하기 쉽게, 결과물은 바로 쓸 수 있게 만듭니다.</p><h2>개인정보 보호가 기본입니다</h2><p>현재 제공하는 편집 도구는 가능한 모든 처리를 사용자의 브라우저 안에서 수행합니다. 선택한 파일을 BlogToolTool 서버에 보관하지 않습니다.</p><h2>계속 개선하겠습니다</h2><p>도구 오류나 필요한 기능이 있다면 hello@blogtooltool.com으로 알려주세요. 실제 블로그 작업에서 자주 반복되는 문제부터 개선하겠습니다.</p></div></Page>;
+  return <Page title="블로거의 귀찮은 작업을 줄입니다" intro="BlogToolTool은 콘텐츠에 더 집중할 수 있도록 반복적인 이미지·영상 작업을 간단하게 만드는 무료 웹 도구입니다." path="/about"><div className="prose"><h2>작지만 제대로 작동하는 도구</h2><p>거대한 편집 프로그램을 켜지 않고도, 블로그에 사진 한 장을 올리기 위해 필요한 일을 빠르게 끝낼 수 있어야 한다고 생각합니다. 기능은 이해하기 쉽게, 결과물은 바로 쓸 수 있게 만듭니다.</p><h2>개인정보 보호가 기본입니다</h2><p>현재 제공하는 편집 도구는 가능한 모든 처리를 사용자의 브라우저 안에서 수행합니다. 선택한 파일을 BlogToolTool 서버에 보관하지 않습니다.</p><h2>계속 개선하겠습니다</h2><p>도구 오류나 필요한 기능이 있다면 jhonbeetbox@naver.com으로 알려주세요. 실제 블로그 작업에서 자주 반복되는 문제부터 개선하겠습니다.</p></div></Page>;
 }
 
 function Privacy() {
-  return <Page title="개인정보처리방침" intro="시행일: 2026년 7월 28일" path="/privacy"><div className="prose policy"><h2>1. 처리하는 정보</h2><p>BlogToolTool은 도구 사용을 위한 회원가입을 요구하지 않습니다. 사용자가 선택한 이미지와 영상은 브라우저에서 처리되며 서비스 서버로 업로드하거나 저장하지 않습니다.</p><h2>2. 자동으로 수집될 수 있는 정보</h2><p>서비스 안정화와 이용 현황 파악을 위해 방문 페이지, 브라우저 유형, 접속 시간 등 비식별 이용 정보가 분석 도구를 통해 수집될 수 있습니다. 광고가 게재되는 경우 광고 제공자가 쿠키를 사용할 수 있습니다.</p><h2>3. 쿠키</h2><p>사용자는 브라우저 설정에서 쿠키 저장을 거부하거나 삭제할 수 있습니다. 쿠키 제한 시 일부 분석 또는 광고 기능이 정상 동작하지 않을 수 있습니다.</p><h2>4. 문의</h2><p>개인정보 관련 문의: hello@blogtooltool.com</p></div></Page>;
+  return <Page title="개인정보처리방침" intro="시행일: 2026년 7월 28일" path="/privacy"><div className="prose policy"><h2>1. 처리하는 정보</h2><p>BlogToolTool은 도구 사용을 위한 회원가입을 요구하지 않습니다. 사용자가 선택한 이미지와 영상은 브라우저에서 처리되며 서비스 서버로 업로드하거나 저장하지 않습니다.</p><h2>2. 자동으로 수집될 수 있는 정보</h2><p>서비스 안정화와 이용 현황 파악을 위해 방문 페이지, 브라우저 유형, 접속 시간 등 비식별 이용 정보가 분석 도구를 통해 수집될 수 있습니다. 광고가 게재되는 경우 광고 제공자가 쿠키를 사용할 수 있습니다.</p><h2>3. 쿠키</h2><p>사용자는 브라우저 설정에서 쿠키 저장을 거부하거나 삭제할 수 있습니다. 쿠키 제한 시 일부 분석 또는 광고 기능이 정상 동작하지 않을 수 있습니다.</p><h2>4. 문의</h2><p>개인정보 관련 문의: jhonbeetbox@naver.com</p></div></Page>;
 }
 
 function Terms() {
-  return <Page title="이용약관" intro="시행일: 2026년 7월 28일" path="/terms"><div className="prose policy"><h2>1. 서비스 이용</h2><p>BlogToolTool은 별도 고지 없이 기능을 개선·변경할 수 있습니다. 사용자는 관계 법령과 타인의 저작권을 준수하는 범위에서 도구를 이용해야 합니다.</p><h2>2. 결과물과 책임</h2><p>변환 전 원본 파일은 사용자가 직접 안전하게 보관해야 합니다. 브라우저, 기기 성능, 파일 형식에 따라 결과가 달라질 수 있으므로 중요한 작업은 결과물을 확인한 후 사용해 주세요.</p><h2>3. 금지 행위</h2><p>서비스 운영을 방해하거나, 악성 코드를 유포하거나, 타인의 권리를 침해하는 목적으로 서비스를 이용할 수 없습니다.</p><h2>4. 문의</h2><p>서비스 관련 문의: hello@blogtooltool.com</p></div></Page>;
+  return <Page title="이용약관" intro="시행일: 2026년 7월 28일" path="/terms"><div className="prose policy"><h2>1. 서비스 이용</h2><p>BlogToolTool은 별도 고지 없이 기능을 개선·변경할 수 있습니다. 사용자는 관계 법령과 타인의 저작권을 준수하는 범위에서 도구를 이용해야 합니다.</p><h2>2. 결과물과 책임</h2><p>변환 전 원본 파일은 사용자가 직접 안전하게 보관해야 합니다. 브라우저, 기기 성능, 파일 형식에 따라 결과가 달라질 수 있으므로 중요한 작업은 결과물을 확인한 후 사용해 주세요.</p><h2>3. 금지 행위</h2><p>서비스 운영을 방해하거나, 악성 코드를 유포하거나, 타인의 권리를 침해하는 목적으로 서비스를 이용할 수 없습니다.</p><h2>4. 문의</h2><p>서비스 관련 문의: jhonbeetbox@naver.com</p></div></Page>;
 }
 
 function NotFound() {
