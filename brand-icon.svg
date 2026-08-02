@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">BlogToolTool 로고</title>
+  <desc id="desc">산호색 바탕에 대문자 B와 망치 모양 T를 결합한 아이콘</desc>
+  <rect x="17" y="17" width="478" height="478" rx="112" fill="#ff6b4a" stroke="#1c1d19" stroke-width="18"/>
+  <path fill="#fffdf7" fill-rule="evenodd" d="M82 84h127c72 0 111 34 111 91 0 34-17 59-48 73 39 13 59 44 59 87 0 61-43 93-122 93H82V84Zm73 67v70h46c31 0 47-12 47-35 0-24-16-35-47-35h-46Zm0 133v77h52c34 0 51-13 51-39 0-25-17-38-51-38h-52Z"/>
+  <rect x="304" y="96" width="171" height="72" rx="22" fill="#1c1d19"/>
+  <path d="M331 112h118" stroke="#fff1b8" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <rect x="366" y="153" width="49" height="274" rx="24" fill="#1c1d19"/>
+  <path d="M390 187v194" stroke="#fff1b8" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+</svg>
